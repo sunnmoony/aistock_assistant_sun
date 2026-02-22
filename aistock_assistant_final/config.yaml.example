@@ -1,0 +1,92 @@
+advanced:
+  backup_enabled: true
+  backup_interval: 3600
+  data_path: ./data
+  debug_mode: false
+  log_level: INFO
+ai:
+  api_key: 'YOUR_API_KEY_HERE'
+  api_url: https://api.siliconflow.cn/v1
+  max_retries: 3
+  model: deepseek-ai/DeepSeek-V3
+  timeout: 60
+  providers:
+    siliconflow:
+      enabled: true
+      api_key: 'YOUR_SILICONFLOW_API_KEY_HERE'
+      api_url: https://api.siliconflow.cn/v1
+      model: deepseek-ai/DeepSeek-V3
+    openai:
+      enabled: true
+      api_key: 'YOUR_OPENAI_API_KEY_HERE'
+      api_url: https://api.openai.com/v1
+      model: gpt-4
+    deepseek:
+      enabled: true
+      api_key: 'YOUR_DEEPSEEK_API_KEY_HERE'
+      api_url: https://api.deepseek.com/v1
+      model: deepseek-chat
+app:
+  font_size: normal
+  language: zh-CN
+  name: A股智能助手
+  theme: light
+  version: 2.0.0
+data:
+  auto_refresh: true
+  cache_enabled: true
+  cache_ttl: 300
+  network:
+    enabled: true
+    max_retries: 3
+    retry_delay: 2
+    timeout: 30
+  refresh_interval: 30
+  use_mock_data: false
+  show_data_source: true
+data_sources:
+  akshare:
+    enabled: true
+    max_retries: 3
+    timeout: 30
+  baostock:
+    enabled: true
+  bocha:
+    enabled: true
+    api_key: 'YOUR_BOCHA_API_KEY_HERE'
+    timeout: 30
+  tushare:
+    enabled: true
+    api_key: 'YOUR_TUSHARE_API_KEY_HERE'
+    timeout: 30
+  mock:
+    enabled: true
+    fallback_only: true
+  primary_source: akshare
+  pytdx:
+    enabled: false
+market:
+  default_market: SH
+  show_after_market: true
+  show_pre_market: true
+  watchlist: []
+notification:
+  desktop: true
+  enabled: true
+  sound: true
+  types:
+  - price_alert
+  - news
+  - system
+search:
+  bocha_api_keys:
+    - 'YOUR_BOCHA_API_KEY_HERE'
+  tavily_api_keys: []
+  serpapi_keys: []
+  brave_api_keys: []
+ui:
+  info_panel_width: 300
+  show_info_panel: true
+  sidebar_width: 240
+  window_height: 900
+  window_width: 1400

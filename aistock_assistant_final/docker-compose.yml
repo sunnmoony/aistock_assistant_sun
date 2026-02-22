@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  aistock:
+    build: .
+    container_name: aistock-assistant
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      # AI 模型配置
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL}
+      - OPENAI_MODEL=${OPENAI_MODEL}
+
+      # 数据源配置
+      - TUSHARE_TOKEN=${TUSHARE_TOKEN}
+
+      # 搜索引擎配置
+      - TAVILY_API_KEYS=${TAVILY_API_KEYS}
+      - SERPAPI_API_KEYS=${SERPAPI_API_KEYS}
+      - BOCHA_API_KEYS=${BOCHA_API_KEYS}
+      - BRAVE_API_KEYS=${BRAVE_API_KEYS}
+
+      # 通知配置
+      - WECHAT_WEBHOOK_URL=${WECHAT_WEBHOOK_URL}
+      - FEISHU_WEBHOOK_URL=${FEISHU_WEBHOOK_URL}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - EMAIL_SENDER=${EMAIL_SENDER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_RECEIVERS=${EMAIL_RECEIVERS}
+      - PUSHOVER_USER_KEY=${PUSHOVER_USER_KEY}
+      - PUSHOVER_API_TOKEN=${PUSHOVER_API_TOKEN}
+      - SERVERCHAN3_SENDKEY=${SERVERCHAN3_SENDKEY}
+      - PUSHPLUS_TOKEN=${PUSHPLUS_TOKEN}
+      - CUSTOM_WEBHOOK_URLS=${CUSTOM_WEBHOOK_URLS}
+      - CUSTOM_WEBHOOK_BEARER_TOKEN=${CUSTOM_WEBHOOK_BEARER_TOKEN}
+
+      # 飞书云文档配置
+      - FEISHU_APP_ID=${FEISHU_APP_ID}
+      - FEISHU_APP_SECRET=${FEISHU_APP_SECRET}
+      - FEISHU_FOLDER_TOKEN=${FEISHU_FOLDER_TOKEN}
+
+      # 系统配置
+      - STOCK_LIST=${STOCK_LIST}
+      - SINGLE_STOCK_NOTIFY=${SINGLE_STOCK_NOTIFY}
+      - REPORT_TYPE=${REPORT_TYPE}
+      - ANALYSIS_DELAY=${ANALYSIS_DELAY}
+
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

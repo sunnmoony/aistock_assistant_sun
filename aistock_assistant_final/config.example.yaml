@@ -1,0 +1,90 @@
+# ===================================
+# A股智能助手 - 配置文件模板
+# ===================================
+# 使用说明：
+# 1. 复制此文件为 config.yaml
+# 2. 根据需要修改配置项
+# 3. AI功能需要配置api_key
+
+# 应用配置
+app:
+  name: A股智能助手
+  version: 2.0.0
+  theme: light
+  language: zh-CN
+  font_size: normal
+
+# AI配置（可选，不配置则使用基础分析功能）
+ai:
+  api_key: ""  # 在此填入您的API密钥
+  api_url: https://api.siliconflow.cn/v1
+  model: deepseek-ai/DeepSeek-V3
+  timeout: 60
+  max_retries: 3
+
+# 数据配置
+data:
+  auto_refresh: true
+  cache_enabled: true
+  cache_ttl: 300
+  refresh_interval: 30
+  use_mock_data: false
+  network:
+    enabled: true
+    max_retries: 3
+    retry_delay: 2
+    timeout: 30
+
+# 数据源配置（免费数据源）
+data_sources:
+  primary_source: "pytdx"
+  
+  # 通达信数据源（免费，推荐）
+  pytdx:
+    enabled: true
+    timeout: 10
+    max_retries: 3
+  
+  # AkShare数据源（免费）
+  akshare:
+    enabled: true
+    timeout: 30
+    max_retries: 3
+  
+  # 模拟数据（后备）
+  mock:
+    enabled: true
+    fallback_only: true
+
+# 市场配置
+market:
+  default_market: SH
+  show_after_market: true
+  show_pre_market: true
+  watchlist: []
+
+# 通知配置
+notification:
+  enabled: true
+  desktop: true
+  sound: true
+  types:
+    - price_alert
+    - news
+    - system
+
+# UI配置
+ui:
+  window_width: 1400
+  window_height: 900
+  sidebar_width: 240
+  info_panel_width: 300
+  show_info_panel: true
+
+# 高级配置
+advanced:
+  data_path: ./data
+  log_level: INFO
+  debug_mode: false
+  backup_enabled: true
+  backup_interval: 3600
